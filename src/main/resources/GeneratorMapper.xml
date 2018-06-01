@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+   
+    <!-- 1.指定连接数据库的JDBC驱动包的所在位置，指定到本机的完整位置 -->
+    <classPathEntry location="D:/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar" />   
+    <!-- <classPathEntry location="C:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />-->  
+    
+    <!-- 2.配置table表信息内容体，targetRuntime指定采用MyBatis3的版本 -->
+    <context id="tables" targetRuntime="MyBatis3">  
+      
+       <!-- 2.1抑制生成注解，由于生成的注解都是英文的可以不让他生成 -->
+        <commentGenerator>  
+            <property name="suppressAllComments" value="true" />  
+        </commentGenerator>  
+       
+        <!-- 2.2配置数据库连接信息 -->
+        <!-- mysql数据库链接URL、用户名、密码 -->  
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+         				 connectionURL="jdbc:mysql://localhost:3306/springbootdb?characterEncoding=utf8" 
+         				 userId="root" 
+         				 password="root"> 
+        <!-- oracle数据库链接URL、用户名、密码 -->			   
+        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" 
+        					connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" 
+       						userId="msa" 
+        					password="msa">-->  
+        </jdbcConnection> 
+         
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false" />  
+        </javaTypeResolver>
+         
+        <!-- 2.3生成模型model类，targetPackage指定model类的包名，targetProject指定生成的model类放在eclipse的哪个工程下面 -->  
+        <javaModelGenerator targetPackage="com.example.demo.model" targetProject="demo\src\main\java">  
+            <property name="enableSubPackages" value="true" />  
+            <property name="trimStrings" value="true" />  
+        </javaModelGenerator>
+          
+        <!-- 2.4生成MyBatis的mapping.xml的映射文件包名和位置 -->  
+        <sqlMapGenerator targetPackage="com.example.demo.mapper.student" targetProject="demo\src\main\java">  
+            <property name="enableSubPackages" value="true" />  
+        </sqlMapGenerator>  
+        
+        <!-- 2.5生成MyBatis的DAO接口类文件的包名和位置 -->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.mapper.student" targetProject="demo\src\main\java">  
+            <property name="enableSubPackages" value="true" />  
+        </javaClientGenerator>  
+       
+        <!-- 2.6生成数据库表名对应的java模型类名(更改tableName和domainObjectName就可以) -->  
+        <table  tableName="student" 
+        		domainObjectName="Student" 
+        		enableCountByExample="false" 
+        		enableUpdateByExample="false" 
+        		enableDeleteByExample="false" 
+        		enableSelectByExample="false" 
+        		selectByExampleQueryId="false" />  
+        		
+    </context>  
+</generatorConfiguration>  
