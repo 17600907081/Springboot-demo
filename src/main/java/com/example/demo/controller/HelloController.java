@@ -19,6 +19,8 @@ public class HelloController {
     public String helloworld(){
 
         System.out.println("23432");
+
+        System.out.println("2343245dfgffh");
         return "使用spring-tool-suite插件--Helloworld *** SpringBoot！！ " 
     +"-------------" + configinfos.getName() + "**来自**" + configinfos.getLocation();
 
