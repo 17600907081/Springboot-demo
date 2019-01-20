@@ -16,9 +16,13 @@ public class HelloController {
 	
     @RequestMapping("/sts")
     @ResponseBody
-    public String helloworld(){  
+    public String helloworld(){
+
+        System.out.println("23432");
         return "使用spring-tool-suite插件--Helloworld *** SpringBoot！！ " 
-    +"-------------" + configinfos.getName() + "**来自**" + configinfos.getLocation();  
+    +"-------------" + configinfos.getName() + "**来自**" + configinfos.getLocation();
+
+
     } 
     
 }
